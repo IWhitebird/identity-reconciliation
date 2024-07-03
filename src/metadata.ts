@@ -1,7 +1,7 @@
 /* eslint-disable */
 export default async () => {
     const t = {
-        ["./customer/dto/customer.dto"]: await import("./customer/dto/customer.dto")
+        ["./contact/dto/contact.dto"]: await import("./contact/dto/contact.dto")
     };
-    return { "@nestjs/swagger": { "models": [[import("./customer/dto/customer.dto"), { "CreateCustomerDto": { email: { required: false, type: () => String }, phoneNo: { required: false, type: () => Number } } }]], "controllers": [[import("./customer/customer.controller"), { "CustomerController": { "getCustomers": {}, "createCustomer": { type: t["./customer/dto/customer.dto"].CreateCustomerDto } } }]] } };
+    return { "@nestjs/swagger": { "models": [[import("./contact/dto/contact.dto"), { "CreateContactDto": { email: { required: false, type: () => String }, phoneNumber: { required: false, type: () => Number } }, "CreateContactResponseDto": { contact: { required: true, type: () => t["./contact/dto/contact.dto"].Contact } }, "Contact": { primaryContactId: { required: true, type: () => Number }, emails: { required: true, type: () => [String] }, phoneNumbers: { required: true, type: () => [String] }, secondaryContactIds: { required: true, type: () => [Number] } } }]], "controllers": [[import("./contact/contact.controller"), { "ContactController": { "getContacts": {}, "createContact": {} } }]] } };
 };
