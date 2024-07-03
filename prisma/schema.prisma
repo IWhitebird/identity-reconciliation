@@ -8,8 +8,19 @@ datasource db {
   directUrl = env("DIRECT_URL")
 }
 
-model User {
+model Customer {
   id    Int     @id @default(autoincrement())
-  email String  @unique
-  name  String?
+  phoneNo String?
+  email   String?  
+  linkedId Int?
+  linkPrecedence linkPrecedence @default(primary) 
+  
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  deletedAt DateTime?
+}
+
+enum linkPrecedence {
+  primary
+  secondary
 }
